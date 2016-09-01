@@ -3,6 +3,8 @@ import Title from "../components/Title";
 import Bio from "../components/Bio";
 import Jobs from "../components/Jobs";
 import Button from "../components/Button";
+import NameInput from "../components/NameInput";
+import BioInput from "../components/BioInput";
 import styles from "../common.scss";
 
 
@@ -34,6 +36,7 @@ export default class App extends Component {
   }
 
   buttonClicked(ModeState) {
+
     var oldName = this.state.user.fullname;
     var oldBio = this.state.user.bio; 
     var oldJobs = this.state.user.jobs; 
@@ -49,15 +52,38 @@ export default class App extends Component {
     this.forceUpdate();
     }
   
+    handleChange(event) {
+      console.log(event);
+    var newName = event.target.value;
+    var oldBio = this.state.user.bio; 
+    var oldJobs = this.state.user.jobs; 
+    var oldMode = this.state.user.inEditMode;
+    
+   this.setState({user: {inEditMode: oldMode, 
+                           fullname: newName,
+                           bio: oldBio,
+                           jobs: oldJobs}});
+    console.log("change");
+
+  }
+  
+  
+  
+  
+  
   render() {
     var ModeState = this.state.user.inEditMode;
     return (
 
       <div>
-        <Title name={this.state.user.fullname} />
-        <Bio bio={this.state.user.bio} />
+
+      {this.state.user.inEditMode ? <NameInput nameValue={this.state.user.fullname} onChange={this.handleChange.bind(this)}/> : <Title name={this.state.user.fullname} /> }
+      
+      {this.state.user.inEditMode ? <BioInput defaultValue ={this.state.user.bio} /> : <Bio bio={this.state.user.bio} />}
+      
         <Jobs jobs={this.state.user.jobs} />
         <button onClick={this.buttonClicked.bind(this, {ModeState})}> {this.state.user.inEditMode ? 'SAVE' : 'EDIT'} </button>
+
       </div>
     );
   }
