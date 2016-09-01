@@ -1,7 +1,12 @@
 import React from "react";
+import styles from "../common.scss";
 
 const Title = (props) => {
-  return <h1>Hello, {props.name}!</h1>;
+  return (
+    <div className={styles.infoContainer}>
+    <h2>Username</h2> <p>{props.name}</p>
+    </div>
+    )
 };
 
 export default Title;
