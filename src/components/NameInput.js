@@ -4,8 +4,6 @@ import styles from "../common.scss";
 const NameInput = (props) => {
   var props = props;
   var nameValue= props.nameValue;
-  var defaultValue = props.defaultValue;
-  //handleChange = props.handleChange(this);
   
   //console.log(handleChange);
   
