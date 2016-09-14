@@ -6,7 +6,8 @@ import Button from "../components/Button";
 import NameInput from "../components/NameInput";
 import BioInput from "../components/BioInput";
 import JobsInput from "../components/JobsInput";
-import styles from "../common.scss";
+//import styles from "../common.scss";
+import styles from "./User.scss";
 
 
 export default class App extends Component {
@@ -91,6 +92,25 @@ handleChange(event, changeType) {
         this.updateState (currentName, currentBio, currentJobs, currentMode);
   }
   
+  addJob() {
+      var currentName = this.state.user.fullname;
+      var currentBio = this.state.user.bio; 
+      var currentJobs = this.state.user.jobs; 
+      var currentMode = this.state.user.inEditMode;
+    
+    currentJobs.push(
+      {
+        startYear: "",
+        endYear: "",
+        jobTitle: "",
+        jobDescription: ""
+      }
+    )
+    this.updateState (currentName, currentBio, currentJobs, currentMode);
+    console.log(this.state.user.jobs.push);
+  }
+  
+  
   
   render() {
     var jobsInputFields = [];
@@ -122,17 +142,27 @@ handleChange(event, changeType) {
     
     var JobInputList = jobsInputFields.map(function(job) {
 
-          return (
-            <div>
-        <h3> Start year </h3>
-        <JobsInput id={job[0].id} onChange={job[0].onChange} value={job[0].value} />
-        <h3> End year </h3>
-        <JobsInput id={job[1].id} onChange={job[1].onChange} value={job[1].value} />
-        <h3> Job Title </h3>
-        <JobsInput id={job[2].id} onChange={job[2].onChange} value={job[2].value} />
-        <h3> Job Description </h3>
-        <JobsInput id={job[3].id} onChange={job[3].onChange} value={job[3].value} />
+      return (
+        <div>
+            <li>
+            <label htmlFor={job[2].id}> Job Title </label>
+            <JobsInput id={job[2].id} onChange={job[2].onChange} value={job[2].value} />
+            <div className={styles.halfcolumnLeft}>
+              <label htmlFor={job[0].id}> Start Year </label>
+              <JobsInput id={job[0].id} onChange={job[0].onChange} value={job[0].value} />
             </div>
+            <div className={styles.halfcolumnRight}>
+              <label htmlFor={job[1].id}> End Year </label>
+              <JobsInput id={job[1].id} onChange={job[1].onChange} value={job[1].value} />
+            </div>
+            
+            <label htmlFor={job[3].id}> Job Description </label>
+            <JobsInput id={job[3].id} onChange={job[3].onChange} value={job[3].value} />
+
+            </li>
+            
+          <hr />
+        </div>
           )
       });
     
@@ -143,20 +173,23 @@ handleChange(event, changeType) {
     
     return (
 
-      <div>
-
-      {this.state.user.inEditMode ? <NameInput nameValue={this.state.user.fullname} onChange={this.handleChange.bind(this, event, "nameChange")}/> : <Title name={this.state.user.fullname} /> }
+      <div className={styles.content}>
       
-      {this.state.user.inEditMode ? <BioInput bioValue ={this.state.user.bio} onChange={this.handleChange.bind(this, event, "bioChange")}/> : <Bio bio={this.state.user.bio} />}
-        
-      {this.state.user.inEditMode ? <div>{JobInputList}</div> : <Jobs jobs = {this.state.user.jobs} />
+      <h1> Profile </h1>
+
+      {this.state.user.inEditMode ? <div className={styles.infoContainer}> <NameInput nameValue={this.state.user.fullname} onChange={this.handleChange.bind(this, event, "nameChange")}/> </div> : <Title name={this.state.user.fullname} /> 
+}
+      
+      {this.state.user.inEditMode ? <div className={styles.infoContainer}> <BioInput bioValue ={this.state.user.bio} onChange={this.handleChange.bind(this, event, "bioChange")}/> </div> : <Bio bio={this.state.user.bio} />
       }
-
-
-    
-
+        
+      {this.state.user.inEditMode ? <div className={styles.jobContainer}> <h2> Jobs </h2> <ul> {JobInputList} </ul>  </div> : <Jobs jobs = {this.state.user.jobs} />
+      }
       
-        <button onClick={this.buttonClicked.bind(this, {ModeState})}> {this.state.user.inEditMode ? 'SAVE' : 'EDIT'} </button>
+      <button className={styles.infoContainer} onClick={this.addJob.bind(this)}> ADD A JOB</button>
+
+          
+        <button className={styles.infoContainer} onClick={this.buttonClicked.bind(this, {ModeState})}> {this.state.user.inEditMode ? 'SAVE' : 'EDIT'} </button>
 
       </div>
     );

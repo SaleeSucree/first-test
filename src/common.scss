@@ -43,11 +43,6 @@ q:before, q:after {
 	content: none;
 }
 
-/* remember to define visible focus styles! 
-:focus {
-	outline: ?????;
-} */
-
 /* remember to highlight inserts somehow! */
 ins {
 	text-decoration: none;
@@ -62,34 +57,134 @@ table {
 }
 
 
+/* reset end */
 
 
 
+$font: Helvetica, sans-serif;
+$primary-color: #95A5A6;
+$accent-color: #16A085;
+$accent-color2: #6C7A89;
+$font-weight: 200;
+$line-height: 1.5;
 
-
-
-
-
-
-
-* {
-  font-family: Verdana;
+div,
+input,
+textarea
+{
+  box-sizing: border-box;
 }
 
-.h2 {
+body {
+  margin-top: 3em;
+  font-family: $font;
+  color: $primary-color;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+h1 {
+  font-size: 30pt;
+  color: $accent-color2;
+  font-weight: $font-weight;
+  text-align: center;
+}
+
+h2 {
+  color: $accent-color;
+  font-size: 20pt;
+  font-weight: $font-weight;
+  text-align: center;
+  margin-bottom: 0.7em;
+  letter-spacing: 4px;
+}
+
+h3 {
+  color: $accent-color2;
+  font-size: 15pt;
+  font-weight: $font-weight;
+  letter-spacing: 3px;
+}
+
+
+
+
+
+
+
+input, 
+textarea {
+  margin: 0 0 0.6em;
+  width: 100%;
+  min-height: 30px;
+  padding: 1em;
+  font-size: 15pt;
+  color: $accent-color2;
+  letter-spacing: 1px;
+  font-weight: $font-weight;
+  background-color: #FCFCFC;
+  border: none;
+}
+
+label {
+  display: block;
   font-style: italic;
-  color: red;
+  letter-spacing: 2px;
+  font-weight: $font-weight;
+  margin: 1em auto 0.4em;
 }
 
-.h3 {
-  font-style: italic;
-  color: red;
+
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 1em 2em;
+  font-size: 15pt;
+  font-weight: $font-weight;
+  letter-spacing: 5px;
+  color: white;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 40px;
+  
+
 }
 
-.infoContainer {
-  margin: 2em;
+button:hover {
+    background-color: $accent-color2;
+  }
+
+input:focus,
+textarea:focus
+{
+	border-color: $accent-color;
+  color: black;
 }
 
-.jobItem {
-  margin: 10px;
+input:hover,
+textarea:hover
+{
+  background-color: rgba(22,160,133, 0.1);
 }
+
+
+
+
+/*input[id*='startYear'],
+input[id*='endYear'] 
+{
+  width: 45%;
+  float: left;
+}
+
+label[for*='startYear'],
+label[for*='endYear']
+{
+  float: left;
+  width: 30%;
+}*/
+
+
+
+

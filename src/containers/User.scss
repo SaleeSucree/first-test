@@ -1,0 +1,49 @@
+@import "../common";
+
+
+.infoContainer {
+  margin-top: 3em;
+  p, h3 {
+    text-align: center;
+    font-size: 13pt;
+  }
+}
+
+.jobContainer {
+  @extend .infoContainer;
+    ul {
+      margin-top: -2em;
+    }
+    li {
+      margin: 3em 0 3em;
+    }
+}
+
+  hr {
+    width: 50%;
+    border-color: $primary-color;
+  }
+
+.content {
+  width: 50%;
+  margin: 0 auto 10em;
+}
+
+.halfcolumnLeft {
+  float: left;
+  width: 42%;
+  margin-bottom: 1em;
+}
+
+.halfcolumnRight
+{
+  @extend .halfcolumnLeft;
+  margin-left: 16%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .content {
+        width: 100%;
+    }
+}

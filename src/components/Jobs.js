@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../common.scss";
+import styles from "./Jobs.scss";
 
 const Jobs = (props) => {
    var jobs = props.jobs;
@@ -13,16 +13,18 @@ const Jobs = (props) => {
     var jobDescription = job.jobDescription;
 
     return (
-    <li className={styles.jobItem}>
+    <li>
       <h3> {startYear} - {endYear} </h3>
+      <p>
       {jobTitle} <br />
       {jobDescription}
+      </p>
     </li>
     )}
     );
   
   return (
-    <div className={styles.infoContainer}>
+    <div className={styles.jobContainer}>
       <h2>Jobs</h2>
       <ul>
         {jobListItems}

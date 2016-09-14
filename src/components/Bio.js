@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../common.scss";
-//import styles from "./Bio.scss";
+//import styles from "../common.scss";
+import styles from "./Bio.scss";
 
 
 const Bio = (props) => {

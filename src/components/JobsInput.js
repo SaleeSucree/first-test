@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../common.scss";
+import styles from "./JobsInput.scss";
 
 //const JobsInput = (props) => {
 var JobsInput = React.createClass({
@@ -18,11 +18,9 @@ var JobsInput = React.createClass({
  
  //var jobInputs = this.props.jobsValue.map(function(job){
     return (
-
-      <div>
+     
       <input onChange={this.update} value={this.props.value} id={this.props.id} />
-
-      </div>
+      
   )
   }
   
@@ -37,14 +35,3 @@ var JobsInput = React.createClass({
 
 export default JobsInput;
 
-
-
-      /* What was in the render before
-      <h2>Start Year</h2>
-      <input type="text" onChange={this.update} value={job.startYear} className={styles.textInput} /> 
-      <h2>End Year</h2> 
-      <input id="hello" type="text" onChange={this.update} value={job.endYear} className={styles.textInput} /> 
-      <h2>Job Title</h2> 
-      <input type="text" onChange={this.update} value={job.jobTitle} className={styles.textInput} /> 
-      <h2>Job Description</h2> 
-      <textarea rows="4" cols="50" onChange={this.update} value={job.jobDescription} className={styles.textInput}></textarea>;*/

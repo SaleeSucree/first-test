@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../common.scss";
+import styles from "./Title.scss";
 
 const Title = (props) => {
   return (
